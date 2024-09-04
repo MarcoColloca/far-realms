@@ -11,7 +11,7 @@
         computed:{
             mountBg()
             {                
-                return `/public/imgs/${this.$route.name}Bg.jpg`
+                return `/imgs/${this.$route.name}Bg.jpg`
             }
         }
     }
