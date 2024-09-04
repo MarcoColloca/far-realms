@@ -21,7 +21,7 @@
 
 <template>
     <!-- Page Main -->
-    <main class="py-5" 
+    <main  
     :style="{
         backgroundImage: `url(${mountBg})`, 
     }">

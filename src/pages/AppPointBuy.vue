@@ -268,90 +268,93 @@
 
 
 <template>
-    <div class="container mb-5">
-        <div class="main-container p-5">            
-            <h5>
-                In questa sezione puoi utilizzare il Point Buy Classico, hai la facoltà di scegliere quanti 
-                sono i punti iniziali, ed utilizzarli a tuo piacomento, seguendo le regole classiche di d&d 
-                spiegate nella legenda in fondo alla pagina.
-            </h5>
-        </div>
-    </div>
-
-    <div class="container mb-5">
-        <div class="main-container p-5">
-            <div class="w-50 d-flex flex-column align-items-start m-0-auto">
-                <div class="w-100 d-flex justify-content-between align-items-center">
-                    <h5>
-                        <label for="newAbility" :class="{focused: focusLabelText}"> Aggiungi Caratteristica:</label>
-                    </h5>
-                    <h6>
-                        <input @keyup.enter="addNewStat()" @focus="focusLabelText=true" @blur="focusLabelText=false" class="my-input" type="text" name="newAbility" id="newAbility" v-model="newAbility">
-                    </h6>
-                </div>
-                <div class="w-100 d-flex justify-content-between align-items-center">
-                    <h5>                        
-                        <label for="abilityPointsMax" :class="{focused: focusLabelNum}"> Modifica Punti Totali:</label>
-                    </h5>
-                    <h6> 
-                        <input @focus="focusLabelNum=true" @blur="focusLabelNum=false" class="my-input" type="number" name="abilityPointsMax" id="abilityPointsMax" v-model="abilityPointsMax">
-                    </h6>
-                </div>
+    <section class="py-5">
+    
+        <div class="container mb-5">
+            <div class="main-container p-5">            
+                <h5>
+                    In questa sezione puoi utilizzare il Point Buy Classico, hai la facoltà di scegliere quanti 
+                    sono i punti iniziali, ed utilizzarli a tuo piacomento, seguendo le regole classiche di d&d 
+                    spiegate nella legenda in fondo alla pagina.
+                </h5>
             </div>
         </div>
-    </div>
-
-    <div class="container text-center mb-5">
-        <div class="main-container">
-            <h2 class="text-center mb-5">Point Buy</h2>
-
-
-            <h4 class="mb-5">Punti Inziali: <span :class="checkMax()">{{ abilityPoints }}</span> <span> / {{ abilityPointsMax }}</span></h4>
-
-            <ul class="stat-list">
-                <li v-for="stat in stats">
-                    <div class="fs-4">                        
-                    
-                        <span class="text-start w-50">
-                            {{ stat.name }} 
-                        </span>
-                    
-                    
-                        <span class="text-center d-flex justify-content-between w-35">
-                            <span class="btn btn-outline-light" @click="removePoint(stat.name, stat.value)"><</span>
-                            {{ stat.value }}
-                            <span class="btn btn-outline-light" @click="addPoint(stat.name, stat.value)">></span>
-                        </span>
-                        <span class="btn btn-outline-danger" @click="removeStat(stat.id)">X</span>                  
+    
+        <div class="container mb-5">
+            <div class="main-container p-5">
+                <div class="w-50 d-flex flex-column align-items-start m-0-auto">
+                    <div class="w-100 d-flex justify-content-between align-items-center">
+                        <h5>
+                            <label for="newAbility" :class="{focused: focusLabelText}"> Aggiungi Caratteristica:</label>
+                        </h5>
+                        <h6>
+                            <input @keyup.enter="addNewStat()" @focus="focusLabelText=true" @blur="focusLabelText=false" class="my-input" type="text" name="newAbility" id="newAbility" v-model="newAbility">
+                        </h6>
                     </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="container mb-5">
-        <div class="main-container">
-            <h2 class="text-center mb-3">Legenda</h2>
-            <div class="table-container fs-5">
-                <table>
-                    <thead>
-                        <th class="px-2 text-center tborder-T tborder-L">Punteggio</th>
-                        <th class="px-2 text-center tborder-T pe-4">Costo</th>
-                        <th class="px-2 text-center tborder-T ps-4">Punteggio</th>
-                        <th class="px-2 text-center tborder-T tborder-R">Costo</th>
-                    </thead>
-                    <tbody>
-                        <tr v-for="number in 9">
-                            <td class="text-center tborder-B tborder-L">{{ number }}</td>                            
-                            <td class="text-center tborder-B tborder-R">{{ calcCost(number)}}</td>
-                            <td class="text-center tborder-B">{{ number+9 }}</td>
-                            <td class="text-center tborder-B tborder-R">{{ calcCost(number+9) }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div class="w-100 d-flex justify-content-between align-items-center">
+                        <h5>                        
+                            <label for="abilityPointsMax" :class="{focused: focusLabelNum}"> Modifica Punti Totali:</label>
+                        </h5>
+                        <h6> 
+                            <input @focus="focusLabelNum=true" @blur="focusLabelNum=false" class="my-input" type="number" name="abilityPointsMax" id="abilityPointsMax" v-model="abilityPointsMax">
+                        </h6>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    
+        <div class="container text-center mb-5">
+            <div class="main-container">
+                <h2 class="text-center mb-5">Point Buy</h2>
+    
+    
+                <h4 class="mb-5">Punti Inziali: <span :class="checkMax()">{{ abilityPoints }}</span> <span> / {{ abilityPointsMax }}</span></h4>
+    
+                <ul class="stat-list">
+                    <li v-for="stat in stats">
+                        <div class="fs-4">                        
+                        
+                            <span class="text-start w-50">
+                                {{ stat.name }} 
+                            </span>
+                        
+                        
+                            <span class="text-center d-flex justify-content-between w-35">
+                                <span class="btn btn-outline-light" @click="removePoint(stat.name, stat.value)"><</span>
+                                {{ stat.value }}
+                                <span class="btn btn-outline-light" @click="addPoint(stat.name, stat.value)">></span>
+                            </span>
+                            <span class="btn btn-outline-danger" @click="removeStat(stat.id)">X</span>                  
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="container mb-5">
+            <div class="main-container">
+                <h2 class="text-center mb-3">Legenda</h2>
+                <div class="table-container fs-5">
+                    <table>
+                        <thead>
+                            <th class="px-2 text-center tborder-T tborder-L">Punteggio</th>
+                            <th class="px-2 text-center tborder-T pe-4">Costo</th>
+                            <th class="px-2 text-center tborder-T ps-4">Punteggio</th>
+                            <th class="px-2 text-center tborder-T tborder-R">Costo</th>
+                        </thead>
+                        <tbody>
+                            <tr v-for="number in 9">
+                                <td class="text-center tborder-B tborder-L">{{ number }}</td>                            
+                                <td class="text-center tborder-B tborder-R">{{ calcCost(number)}}</td>
+                                <td class="text-center tborder-B">{{ number+9 }}</td>
+                                <td class="text-center tborder-B tborder-R">{{ calcCost(number+9) }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 
