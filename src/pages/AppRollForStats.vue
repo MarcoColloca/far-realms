@@ -487,7 +487,7 @@ export default{
 
         getDiceImg(number)
         {
-            return `/public/imgs/d6-${number}.png`           
+            return `/imgs/d6-${number}.png`           
         }
     }
 }
