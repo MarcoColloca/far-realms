@@ -32,8 +32,7 @@
 <style lang="scss" scoped>
 
 section{
-    height: 100vh;
-    background-color: rgb(0, 0, 0);
+    height: 100%;
     color: coral;
     display: flex;
     align-items: center;
