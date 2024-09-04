@@ -25,6 +25,7 @@
             <nav class="d-flex gap-5 justify-content-center align-items-center">
                 <RouterLink  :to="{name: 'home'}">Home</RouterLink>
                 <RouterLink  :to="{name: 'rollForStats'}">Roll for Stats!</RouterLink>
+                <RouterLink  :to="{name: 'pointBuy'}">Point Buy</RouterLink>
             </nav>
             <img class="dragon-h-icon-left d-none d-md-block" src="/public/imgs/dragon-header-icon.png" alt="">
             <img class="dragon-h-icon-right d-none d-md-block" src="/public/imgs/dragon-header-icon.png" alt="">

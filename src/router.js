@@ -5,7 +5,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 import AppHome from './pages/AppHome.vue'
 import AppNotFound from './pages/AppNotFound.vue'
 import AppRollForStats from './pages/AppRollForStats.vue'
-
+import AppPointBuy from './pages/AppPointBuy.vue'
 
 // Creazione delle Rotte
 
@@ -17,6 +17,10 @@ const routes = [
 
     { 
         path: '/rollForStats', name:'rollForStats', component:AppRollForStats 
+    },
+
+    { 
+        path: '/pointBuy', name:'pointBuy', component:AppPointBuy 
     },
      
     {   // will match everything and put it under `route.params.pathMatch`
