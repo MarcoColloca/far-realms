@@ -22,10 +22,11 @@
 
     .back-top-button{
         position: absolute;
-        right: 20px;
-        bottom: 20px;
-        background-color: $app-orange;
+        right: calc(5% - 25px);
+        bottom: calc(50% - 25px);
+        background-color: $app-purple;
         color: $app-white;
+        border: 1px solid $app-white;
         width: 50px;
         aspect-ratio: 1/1;
         display: flex;
@@ -33,5 +34,10 @@
         align-items: center;
         font-size: 32px;
         border-radius: 50%;
+        &:hover{
+            background-color: $app-white;
+            color: $app-purple;
+            border: 1px solid $app-purple;
+        }
     }
 </style>

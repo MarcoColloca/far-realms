@@ -1,7 +1,11 @@
 <script>
+ import BentoBox from '../components/single-components/general/BentoBox.vue'
+ import BackTop from '../components/single-components/general/BackTop.vue'
 
     export default {
         components:{
+            BentoBox,
+            BackTop
         },
 
         data(){            
@@ -19,10 +23,13 @@
 <template>
     <!-- Page Footer -->
     <footer>
-        <div class="container">
-            <h1>
-                I'm a Wonderful Footer
-            </h1>
+        <div class="container position-relative">
+            <BentoBox class="text-light">
+                <h2 class="mt-2">
+                    Marco Colloca - Full Stack Web Developer
+                </h2>
+            </BentoBox>
+            <BackTop></BackTop>
         </div>
     </footer>
 </template>
@@ -36,5 +43,6 @@
 footer{
     height: 100px;
     background-color: $app-purple;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 </style>
