@@ -31,9 +31,10 @@
 
 
 <style lang="scss" scoped>
+@use '../assets/style/partials/variables' as *;
 
 footer{
     height: 100px;
-    background-color: coral;
+    background-color: $app-purple;
 }
 </style>
