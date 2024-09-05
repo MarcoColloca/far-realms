@@ -7,7 +7,7 @@
             return {
                 test: 'ciao',
                 focusLabelNum: false,
-                focusLabelText: false,
+                focusLabelText: false,                
                 newAbility: '',
                 abilityPoints: 0,
                 abilityPointsMax: 27,
@@ -15,32 +15,38 @@
                     {
                         id: 0,
                         name: 'Forza',
-                        value: 8
+                        value: 8,
+                        isVisibleModal: false,
                     },
                     {
                         id: 1,
                         name: 'Destrezza',
-                        value: 8
+                        value: 8,
+                        isVisibleModal: false,
                     },
                     {
                         id: 2,
                         name: 'Costituzione',
-                        value: 8
+                        value: 8,
+                        isVisibleModal: false,
                     },
                     {
                         id: 3,
                         name: 'Intelligenza',
-                        value: 8
+                        value: 8,
+                        isVisibleModal: false,
                     },
                     {
                         id: 4,
                         name: 'Saggezza',
-                        value: 8
+                        value: 8,
+                        isVisibleModal: false,
                     },
                     {
                         id: 5,
                         name: 'Carisma',
-                        value: 8
+                        value: 8,
+                        isVisibleModal: false,
                     }
                 ]
             }
@@ -58,6 +64,53 @@
         },
 
         methods:{
+            resetPointBuy()
+            {
+                this.stats = [
+                    {
+                        id: 0,
+                        name: 'Forza',
+                        value: 8,
+                        isVisibleModal: false,
+                    },
+                    {
+                        id: 1,
+                        name: 'Destrezza',
+                        value: 8,
+                        isVisibleModal: false,
+                    },
+                    {
+                        id: 2,
+                        name: 'Costituzione',
+                        value: 8,
+                        isVisibleModal: false,
+                    },
+                    {
+                        id: 3,
+                        name: 'Intelligenza',
+                        value: 8,
+                        isVisibleModal: false,
+                    },
+                    {
+                        id: 4,
+                        name: 'Saggezza',
+                        value: 8,
+                        isVisibleModal: false,
+                    },
+                    {
+                        id: 5,
+                        name: 'Carisma',
+                        value: 8,
+                        isVisibleModal: false,
+                    }
+                ]
+                this.focusLabelNum = false
+                this.focusLabelText = false              
+                this.newAbility = ''
+                this.abilityPoints = 0
+                this.abilityPointsMax = 27
+            },
+
             addNewStat()
             {
                
@@ -72,13 +125,24 @@
                 const stat = {
                     id: lastId + 1,
                     name: this.newAbility,
-                    value: 8
+                    value: 8,
+                    isVisibleModal: false,
                 }
 
                 if(stat.name !== '' && isNaN(stat.name))
                 {
                     this.stats.push(stat)
                 }
+            },
+
+            toggleModal(id)
+            {
+                this.stats.forEach(stat => {
+                    if(stat.id === id)
+                    {
+                        stat.isVisibleModal = !stat.isVisibleModal;
+                    }
+                });
             },
 
             removeStat(statId)
@@ -307,17 +371,16 @@
         </div>
         
         <!-- Point Buy -->
-        <div class="container text-center mb-5">
+        <div class="container text-center mb-5 ">
             <div class="main-container">
-                <h2 class="text-center mb-5">Point Buy</h2>
-    
+                <h2 class="text-center mb-3">Point Buy</h2>
+                <h6 class="btn btn-outline-warning mb-5" @click="resetPointBuy">Reset</h6>
     
                 <h4 class="mb-5">Punti Inziali: <span :class="checkMax()">{{ abilityPoints }}</span> <span> / {{ abilityPointsMax }}</span></h4>
     
                 <ul class="stat-list">
-                    <li v-for="stat in stats">
+                    <li v-for="stat in stats" class="position-relative">
                         <div class="fs-4">                        
-                        
                             <span class="text-start w-50">
                                 {{ stat.name }} 
                             </span>
@@ -328,7 +391,12 @@
                                 {{ stat.value }}
                                 <span class="btn btn-outline-light" @click="addPoint(stat.name, stat.value)">></span>
                             </span>
-                            <span class="btn btn-outline-danger" @click="removeStat(stat.id)">X</span>                  
+                            <span class="btn btn-outline-danger" @click="toggleModal(stat.id)">X</span>                  
+                        </div>
+                        <div v-if="stat.isVisibleModal" class="my-modal-box">
+                            <span>Eliminare la Stat?!</span>
+                            <span class="my-modal-box-btn text-danger" @click="removeStat(stat.id)"> Sì</span>
+                            <span class="my-modal-box-btn text-success" @click="toggleModal(stat.id)">No</span>
                         </div>
                     </li>
                 </ul>
@@ -387,20 +455,40 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        row-gap: 15px;
         li{
             width: 35%;
             border-bottom: 1px solid white;
             padding: 0 15px;
             padding-bottom: 5px;
+            padding-top: 15px;
             div{
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
             }
+            .my-modal-box{
+                background-color: #1d1d1d;
+                color: #ffa500;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 99;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                span{
+                    cursor:default;
+                }
+                .my-modal-box-btn{
+                    cursor: pointer;
+                }
+            }
         }
     }
 }
+
 
 .tborder-B{
     border-bottom: 1px dotted white;
