@@ -22,11 +22,37 @@
 <template>
     <header class="header-section">
         <div class="container">
-            <nav class="d-flex gap-5 justify-content-center align-items-center">
-                <RouterLink  :to="{name: 'home'}">Home</RouterLink>
-                <RouterLink  :to="{name: 'rollForStats'}">Roll for Stats!</RouterLink>
-                <RouterLink  :to="{name: 'pointBuy'}">Point Buy</RouterLink>
-                <RouterLink  :to="{name: 'critTable'}">Crit Table</RouterLink>
+            <nav class=" justify-content-center align-items-center navbar navbar-expand-lg">
+                <div>
+                    <button 
+                    class="navbar-toggler navbar-burger p-1" 
+                    type="button" 
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation"
+                    >
+                    <span class="burger"><font-awesome-icon :icon="['fas', 'scroll']" /></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">   
+                        <ul class="d-flex gap-5">
+                            <li>
+                                <RouterLink  :to="{name: 'home'}">Home</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink  :to="{name: 'rollForStats'}">Roll for Stats!</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink  :to="{name: 'pointBuy'}">Point Buy</RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink  :to="{name: 'critTable'}">Crit Table</RouterLink>
+                            </li>
+                        </ul>     
+                    </div>
+                </div>
             </nav>
             <img class="dragon-h-icon-left d-none d-md-block" src="/public/imgs/dragon-header-icon.png" alt="">
             <img class="dragon-h-icon-right d-none d-md-block" src="/public/imgs/dragon-header-icon.png" alt="">
@@ -118,5 +144,37 @@ header{
         transform:  translateX(0) rotateY(180deg);
     }
 }
+
+/** Navbar */
+.burger {
+    font-size: 20px;
+    color: $app-purple;
+}
+
+.navbar-burger {
+    border: none;
+    background-color: white;
+    background-size: 100%;
+    background-position: center;
+    vertical-align: middle;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-collapse {
+    
+    .btn {
+        border: transparent;
+    }
+}
+
+.down-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 
 </style>
