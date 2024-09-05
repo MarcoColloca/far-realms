@@ -771,10 +771,10 @@ export default {
         </div>
     </section>
 
-    <!-- Footer -->
-    <section v-show="choseTab.fifth === false">
-        <div class="footer-container">
-            <h1 class="footer-title"> Dadi dei Roll!</h1>
+    <!-- Bottom -->
+    <section v-show="choseTab.fifth === false" class="pb-5">
+        <div class="bottom-container">
+            <h1 class="bottom-title"> Dadi dei Roll!</h1>
             <div class="container">
                 <div class="row justify-around">
                     <div class="col-4">
@@ -858,7 +858,7 @@ menu {
     border-radius: 18px;
 }
 
-.footer-container {
+.bottom-container {
     max-width: 1200px;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.7);
@@ -1003,9 +1003,9 @@ menu {
 }
 
 
-/*\ Footer \*/
+/*\ bottom \*/
 
-.footer-title {
+.bottom-title {
     text-align: center;
     color: crimson;
     margin-bottom: 20px;
