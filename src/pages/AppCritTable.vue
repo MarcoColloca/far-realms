@@ -6,6 +6,7 @@ export default {
         return{
             // contenuto del titolo
             title:'Tabelle dei Critici',
+            isVisibleNavbar: true,
             damages:  [
                 'Reset',
                 'Contundenti',
@@ -18,8 +19,8 @@ export default {
                 'Veleno',
                 'Forza',
                 'Suono',
-                'Necrotico',
                 'Radiante',
+                'Necrotico',
                 'Psichico',
                 'Vuoto'
             ],
@@ -1028,7 +1029,8 @@ export default {
         },
 
 
-        getDescription(array){
+        getDescription(array)
+        {
             for(let i = 0; i < array.length; i++){
                 if(array[i].selezionato === true){
                     return  array[i].descrizione
@@ -1037,7 +1039,8 @@ export default {
         },
 
 
-        getRemedy(array){
+        getRemedy(array)
+        {
             for(let i = 0; i < array.length; i++){
                 if(array[i].selezionato === true){
                     return  array[i].cura
@@ -1046,7 +1049,8 @@ export default {
         },
 
 
-        getSpecial(array){
+        getSpecial(array)
+        {
             for(let i = 0; i < array.length; i++){
                 if(array[i].selezionato === true){
                     return  array[i].speciale
@@ -1054,7 +1058,8 @@ export default {
             }
         },
 
-        findEffect(array){
+        findEffect(array)
+        {
             for(let i = 0; i < array.length; i++){
                 array[i].selezionato = false;
             }
@@ -1070,14 +1075,26 @@ export default {
             
         },
 
-        isSelected(object){
+        isSelected(object)
+        {
             if(object.selezionato === true){
                 return 'selected'
             }
         },
 
-        nameIntoId(name){
+        nameIntoId(name)
+        {
             return `#${name}`
+        },
+
+        hideNavbar()
+        {
+            this.isVisibleNavbar = false;
+        },
+
+        showNavbar()
+        {
+            this.isVisibleNavbar = true;
         }
     }
 
@@ -1088,7 +1105,52 @@ export default {
 <template>
     
 <div class="crit-section">
-    <div class="lista-danni">
+    <div class="container text-light mt-4 crit-section__description d-none d-md-block">
+        <h3 class="text-center glow-text-purple mb-4">Tabelle dei Critici</h3>
+        
+        <span class="text-start fs-5">
+            Questa sezione è stata creata perchè io ed i miei amici abbiamo sempre trovato i Critici della 5e "noiosi". <br>
+            Spesso capita che, se non appartieni alla giusta classe, il tuo danno critico può essere inferiore ad un 
+            danno normale, il che rovina completamente l'euforia di aver messo a segno un colpo critico. <br>
+            C'è da precisare che noi abbiamo giocato per molto tempo in 3.5, dove il critico poteva essere parte integrante
+            di alcune build, si poteva potenziare tramite talenti e privilegi di Classi di Prestigio, ma anche per chi non prendeva
+            queste strade, risultava comunque molto più impattante rispetto al critico della 5e. <br> 
+            Insomma, al nostro tavolo, volevamo evitare il: <br> 
+        </span>
+        <div class="text-warning text-center fs-5">
+            "Finalmente! Un critico!" <br>
+            "Bene tira i danni." <br>
+            "Perfetto ora tiro, 2d8, aggiungo 4.. ho fatto 7 danni..." <br>
+            "Ah! Tanto per cambiare, senza critico hai fatto 10 danni ora 7, che fortuna!" <br>
+        </div>
+        <span class="text-start fs-5">
+            Ecco, per evitare queste situazioni, abbiamo deciso di dare una svolta extra ai colpi critici, suddividendo le possibili
+            conseguenze in base ad alcuni fattori: <br>
+            <ul>
+                <li class="fs-5">
+                    <strong class="text-primary">Tipologia di danno inflitto:</strong> Semplicemente la fonte di danno che viene inflitto, 
+                    con alcuni elementi extra, presenti nelle nostre campagne. 
+                </li>
+                <li class="fs-5">
+                    <strong class="text-primary">Entità del danno ricevuto:</strong> Può variare tra effetti Minori o Maggiori in base alla quantità di danno, 
+                    ma può dipendere anche dalla differenza di taglia tra le creature.
+                </li>
+                <li class="fs-5">
+                    <strong class="text-primary">Tiri Salvezza:</strong> Nel nostro tavolo non consideriamo il 20 e l'1 nei Tiri Salvezza come rispettivamente 
+                    "Sempre Superato" o "Sempre Fallito". Tuttavia, qualora una creatura o un giocatore, dovesse fallire un TS tirando 1 sul dado, in quel caso 
+                    verrà effettuato un roll sulla tabella degli effetti critici, questo crea un maggiore impatto per gli incantesimi ad'area, che nonostante
+                    colpiscano molte creature, spesso a livelli alti/epici risultano comunque essere poco efficaci.
+                </li>
+                <li class="fs-5">
+                    <strong class="text-primary">Vale per tutti:</strong> Ovviamente è una regola che vale sia per i giocatori, sia per i "mostri". Questo
+                    rende gli scontri molto più pericolosi, in quanto, generalmente i mostri effettuano più attacchi rispetto ai giocatori, di conseguenza
+                    hanno una percentuale di critico più elevata.
+                </li>
+            </ul>
+        </span>
+    </div>
+    <div class="lista-danni" v-if="isVisibleNavbar">
+        <h4 class="position-absolute" @click="hideNavbar">X</h4>
         <h2>
             Navbar
         </h2>
@@ -1096,14 +1158,19 @@ export default {
             <li v-for="(damage, i) in this.damages"> <a :href="nameIntoId(damage)">{{damage}}</a></li>
         </ul>
     </div>
+    <div class="text-white mostra-lista-danni" @click="showNavbar" v-if="!isVisibleNavbar">
+        <span>
+            <font-awesome-icon :icon="['fas', 'rectangle-list']" style="color: #6e06f7;" />
+        </span>
+    </div>
     
     <div class="container my-container reset" id="Reset">
-        <button @click="reset()">RESET</button>
+        <button class="btn btn-outline-purple" @click="reset()">RESET</button>
     </div>
     
     <div class="container my-container tabs-section row">
         <!-- Danni Contundenti Minori-->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Contundenti"></span>
             <div class="my-card">
                 <div class="my-card-header contundenti">
@@ -1157,7 +1224,7 @@ export default {
     
     
         <!-- Danni Contundenti Maggiori-->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header contundenti">
                     <h1>Contundenti Maggiori</h1>
@@ -1212,7 +1279,7 @@ export default {
     
     
         <!-- Danni Perforanti Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Perforanti"></span>
             <div class="my-card">
                 <div class="my-card-header perforanti">
@@ -1266,7 +1333,7 @@ export default {
     
     
         <!-- Danni Perforanti Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header perforanti">
                     <h1>Perforanti Maggiori</h1>
@@ -1320,7 +1387,7 @@ export default {
     
     
         <!-- Danni Taglienti Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Taglienti"></span>
             <div class="my-card">
                 <div class="my-card-header taglienti">
@@ -1374,7 +1441,7 @@ export default {
     
     
         <!-- Danni Taglienti Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header taglienti">
                     <h1>Taglienti Maggiori</h1>
@@ -1427,7 +1494,7 @@ export default {
     
     
         <!-- Danni Fuoco Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Fuoco"></span>
             <div class="my-card">
                 <div class="my-card-header fuoco">
@@ -1481,7 +1548,7 @@ export default {
     
     
         <!-- Danni Fuoco Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header fuoco">
                     <h1>Fuoco Maggiori</h1>
@@ -1534,7 +1601,7 @@ export default {
     
     
         <!-- Danni Freddo Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Freddo"></span>
             <div class="my-card">
                 <div class="my-card-header freddo">
@@ -1587,7 +1654,7 @@ export default {
         </div>
     
         <!-- Danni Freddo Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header freddo">
                     <h1>Freddo Maggiori</h1>
@@ -1640,7 +1707,7 @@ export default {
     
     
         <!-- Danni Fulmine Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Fulmine"></span>
             <div class="my-card">
                 <div class="my-card-header fulmine">
@@ -1694,7 +1761,7 @@ export default {
     
     
         <!-- Danni Fulmine Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header fulmine">
                     <h1>Fulmine Maggiori</h1>
@@ -1746,7 +1813,7 @@ export default {
         </div>
     
         <!-- Danni Acido Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Acido"></span>
             <div class="my-card">
                 <div class="my-card-header acido">
@@ -1800,7 +1867,7 @@ export default {
     
     
         <!-- Danni Acido Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header acido">
                     <h1>Acido Maggiori</h1>
@@ -1852,7 +1919,7 @@ export default {
         </div>
     
         <!-- Danni Veleno Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Veleno"></span>
             <div class="my-card">
                 <div class="my-card-header veleno">
@@ -1906,7 +1973,7 @@ export default {
     
     
         <!-- Danni Veleno Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header veleno">
                     <h1>Veleno Maggiori</h1>
@@ -1959,7 +2026,7 @@ export default {
     
     
         <!-- Danni Forza Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Forza"></span>
             <div class="my-card">
                 <div class="my-card-header forza">
@@ -2013,7 +2080,7 @@ export default {
     
     
         <!-- Danni Forza Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header forza">
                     <h1>Forza Maggiori</h1>
@@ -2065,7 +2132,7 @@ export default {
         </div>
     
         <!-- Danni Suono Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Suono"></span>
             <div class="my-card">
                 <div class="my-card-header suono">
@@ -2119,7 +2186,7 @@ export default {
     
     
         <!-- Danni Suono Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header suono">
                     <h1>Suono Maggiori</h1>
@@ -2171,7 +2238,7 @@ export default {
         </div>
     
         <!-- Danni Radiante Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Radiante"></span>
             <div class="my-card">
                 <div class="my-card-header radiante">
@@ -2225,7 +2292,7 @@ export default {
     
     
         <!-- Danni Radiante Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header radiante">
                     <h1>Radiante Maggiori</h1>
@@ -2277,7 +2344,7 @@ export default {
         </div>
     
         <!-- Danni Necrotico Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Necrotico"></span>
             <div class="my-card">
                 <div class="my-card-header necrotico">
@@ -2331,7 +2398,7 @@ export default {
     
     
         <!-- Danni Necrotico Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header necrotico">
                     <h1>Necrotico Maggiori</h1>
@@ -2383,7 +2450,7 @@ export default {
         </div>
     
         <!-- Danni Psichico Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Psichico"></span>
             <div class="my-card">
                 <div class="my-card-header psichico">
@@ -2437,7 +2504,7 @@ export default {
     
     
         <!-- Danni Psichico Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header psichico">
                     <h1>Psichico Maggiori</h1>
@@ -2489,7 +2556,7 @@ export default {
         </div>
     
         <!-- Danni Vuoto Minori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Vuoto"></span>
             <div class="my-card">
                 <div class="my-card-header vuoto">
@@ -2542,7 +2609,7 @@ export default {
         </div>
     
         <!-- Danni Vuoto Maggiori -->
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <span id="Vuoto"></span>
             <div class="my-card">
                 <div class="my-card-header vuoto">
@@ -2637,18 +2704,62 @@ li{
     background-size: 2%;
 }
 
+.crit-section__description{
+    max-width: 40%;
+    ul{
+        list-style: circle;
+    }
+}
+
 /* Sidebar */
-.lista-danni{
+.mostra-lista-danni{
     position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    top: calc(50% - 10px);
+    right: 1%;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    &:hover{
+        cursor: pointer;
+        span{
+            color: crimson;
+            text-shadow: rgb(255, 255, 255) 1px 0 10px;
+        }
+    }
+}
+
+.lista-danni{
+    height: 70vh;
     padding: 50px;
-    top: calc(50% - 358px);
+    position: fixed;    
+    top: calc(50% - 25vh);
     right: 1%;
     color: white;
     background-color: rgba(109, 109, 109, 0.5);
     text-align: center;
+    overflow-y: scroll;
+    scrollbar-width: none;       
+    &::-webkit-scrollbar {
+        width: 0; 
+    }
+
     ul{
         margin: 0;
         padding: 0;
+    }
+    h4{
+        top: 1%;
+        right: 4%;
+        &:hover{
+            color: crimson;
+            cursor: pointer;
+            text-shadow: rgb(255, 255, 255) 1px 0 10px;;
+        }
     }
 }
 
@@ -2656,7 +2767,6 @@ li{
     margin-bottom: 15px;
     color: rgb(255, 0, 51);
     margin-top: -25px;
-
 }
 
 .lista-danni li{
@@ -2669,6 +2779,7 @@ li{
 
 .lista-danni a:hover{
     color: crimson;
+    text-shadow: rgb(0, 0, 0) 1px 0 10px;;
 }
 
 .lista-danni a{
@@ -2692,10 +2803,10 @@ li{
 }
 
 .reset > button{
-    padding: 15px 30px;
-    color: wheat;
-    background-color: cornflowerblue;
-    font-size: 24px;
+    // padding: 15px 30px;
+    // color: wheat;
+    // background-color: cornflowerblue;
+    // font-size: 24px;
     margin-top: 50px;
 }
 
