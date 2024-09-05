@@ -1105,9 +1105,9 @@ export default {
 <template>
     
 <div class="crit-section">
-    <div class="container text-light mt-4 crit-section__description d-none d-md-block">
-        <h1 class="text-center glow-text-purple mb-4">Tabelle dei Critici</h1>
-        
+    <h1 class="text-center text-light glow-text-purple my-5">Tabelle dei Critici</h1>
+
+    <div class="container text-light crit-section__description d-none d-md-block">        
         <span class="text-start fs-5">
             Questa sezione è stata creata perchè io ed i miei amici abbiamo sempre trovato i Critici della 5e "noiosi". <br>
             Spesso capita che, se non appartieni alla giusta classe, il tuo danno critico può essere inferiore ad un 
@@ -1174,7 +1174,7 @@ export default {
             <span id="Contundenti"></span>
             <div class="my-card">
                 <div class="my-card-header contundenti">
-                    <h1>Contundenti Minori</h1>
+                    <h2>Contundenti Minori</h2>
                     <button @click="findEffect(this.contundentiMinori)" class="button-light">
                         Crit!
                     </button>
@@ -1227,7 +1227,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header contundenti">
-                    <h1>Contundenti Maggiori</h1>
+                    <h2>Contundenti Maggiori</h2>
                     <button @click="findEffect(this.contundentiMaggiori)" class="button-light">
                         Crit!
                     </button>
@@ -1283,7 +1283,7 @@ export default {
             <span id="Perforanti"></span>
             <div class="my-card">
                 <div class="my-card-header perforanti">
-                    <h1>Perforanti Minori</h1>
+                    <h2>Perforanti Minori</h2>
                     <button @click="findEffect(this.perforantiMinori)" class="button-light">
                         Crit!
                     </button>
@@ -1336,7 +1336,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header perforanti">
-                    <h1>Perforanti Maggiori</h1>
+                    <h2>Perforanti Maggiori</h2>
                     <button @click="findEffect(this.perforantiMaggiori)" class="button-light">
                         Crit!
                     </button>
@@ -1391,7 +1391,7 @@ export default {
             <span id="Taglienti"></span>
             <div class="my-card">
                 <div class="my-card-header taglienti">
-                    <h1>Taglienti Minori</h1>
+                    <h2>Taglienti Minori</h2>
                     <button @click="findEffect(this.taglientiMinori)" class="button-dark">
                         Crit!
                     </button>
@@ -1444,7 +1444,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header taglienti">
-                    <h1>Taglienti Maggiori</h1>
+                    <h2>Taglienti Maggiori</h2>
                     <button @click="findEffect(this.taglientiMaggiori)" class="button-dark">
                         Crit!
                     </button>
@@ -1498,7 +1498,7 @@ export default {
             <span id="Fuoco"></span>
             <div class="my-card">
                 <div class="my-card-header fuoco">
-                    <h1>Fuoco Minori</h1>
+                    <h2>Fuoco Minori</h2>
                     <button @click="findEffect(this.fuocoMinori)" class="button-dark">
                         Crit!
                     </button>
@@ -1551,7 +1551,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header fuoco">
-                    <h1>Fuoco Maggiori</h1>
+                    <h2>Fuoco Maggiori</h2>
                     <button @click="findEffect(this.fuocoMaggiori)" class="button-dark">
                         Crit!
                     </button>
@@ -1605,7 +1605,7 @@ export default {
             <span id="Freddo"></span>
             <div class="my-card">
                 <div class="my-card-header freddo">
-                    <h1>Freddo Minori</h1>
+                    <h2>Freddo Minori</h2>
                     <button @click="findEffect(this.freddoMinori)" class="button-dark">
                         Crit!
                     </button>
@@ -1657,7 +1657,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header freddo">
-                    <h1>Freddo Maggiori</h1>
+                    <h2>Freddo Maggiori</h2>
                     <button @click="findEffect(this.freddoMaggiori)" class="button-dark">
                         Crit!
                     </button>
@@ -1711,7 +1711,7 @@ export default {
             <span id="Fulmine"></span>
             <div class="my-card">
                 <div class="my-card-header fulmine">
-                    <h1>Fulmine Minori</h1>
+                    <h2>Fulmine Minori</h2>
                     <button @click="findEffect(this.fulmineMinori)" class="button-light">
                         Crit!
                     </button>
@@ -1764,7 +1764,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header fulmine">
-                    <h1>Fulmine Maggiori</h1>
+                    <h2>Fulmine Maggiori</h2>
                     <button @click="findEffect(this.fulmineMaggiori)" class="button-light">
                         Crit!
                     </button>
@@ -1817,7 +1817,7 @@ export default {
             <span id="Acido"></span>
             <div class="my-card">
                 <div class="my-card-header acido">
-                    <h1>Acido Minori</h1>
+                    <h2>Acido Minori</h2>
                     <button @click="findEffect(this.acidoMinori)" class="button-dark">
                         Crit!
                     </button>
@@ -1870,7 +1870,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header acido">
-                    <h1>Acido Maggiori</h1>
+                    <h2>Acido Maggiori</h2>
                     <button @click="findEffect(this.acidoMaggiori)" class="button-dark">
                         Crit!
                     </button>
@@ -1923,7 +1923,7 @@ export default {
             <span id="Veleno"></span>
             <div class="my-card">
                 <div class="my-card-header veleno">
-                    <h1>Veleno Minori</h1>
+                    <h2>Veleno Minori</h2>
                     <button @click="findEffect(this.velenoMinori)" class="button-light">
                         Crit!
                     </button>
@@ -1976,7 +1976,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header veleno">
-                    <h1>Veleno Maggiori</h1>
+                    <h2>Veleno Maggiori</h2>
                     <button @click="findEffect(this.velenoMaggiori)" class="button-light">
                         Crit!
                     </button>
@@ -2030,7 +2030,7 @@ export default {
             <span id="Forza"></span>
             <div class="my-card">
                 <div class="my-card-header forza">
-                    <h1>Forza Minori</h1>
+                    <h2>Forza Minori</h2>
                     <button @click="findEffect(this.forzaMinori)" class="button-dark">
                         Crit!
                     </button>
@@ -2083,7 +2083,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header forza">
-                    <h1>Forza Maggiori</h1>
+                    <h2>Forza Maggiori</h2>
                     <button @click="findEffect(this.forzaMaggiori)" class="button-dark">
                         Crit!
                     </button>
@@ -2136,7 +2136,7 @@ export default {
             <span id="Suono"></span>
             <div class="my-card">
                 <div class="my-card-header suono">
-                    <h1>Suono Minori</h1>
+                    <h2>Suono Minori</h2>
                     <button @click="findEffect(this.suonoMinori)" class="button-dark">
                         Crit!
                     </button>
@@ -2189,7 +2189,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header suono">
-                    <h1>Suono Maggiori</h1>
+                    <h2>Suono Maggiori</h2>
                     <button @click="findEffect(this.suonoMaggiori)" class="button-dark">
                         Crit!
                     </button>
@@ -2242,7 +2242,7 @@ export default {
             <span id="Radiante"></span>
             <div class="my-card">
                 <div class="my-card-header radiante">
-                    <h1>Radiante Minori</h1>
+                    <h2>Radiante Minori</h2>
                     <button @click="findEffect(this.radianteMinori)" class="button-dark">
                         Crit!
                     </button>
@@ -2295,7 +2295,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header radiante">
-                    <h1>Radiante Maggiori</h1>
+                    <h2>Radiante Maggiori</h2>
                     <button @click="findEffect(this.radianteMaggiori)" class="button-dark">
                         Crit!
                     </button>
@@ -2348,7 +2348,7 @@ export default {
             <span id="Necrotico"></span>
             <div class="my-card">
                 <div class="my-card-header necrotico">
-                    <h1>Necrotico Minori</h1>
+                    <h2>Necrotico Minori</h2>
                     <button @click="findEffect(this.necroticoMinori)" class="button-light">
                         Crit!
                     </button>
@@ -2401,7 +2401,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header necrotico">
-                    <h1>Necrotico Maggiori</h1>
+                    <h2>Necrotico Maggiori</h2>
                     <button @click="findEffect(this.necroticoMaggiori)" class="button-light">
                         Crit!
                     </button>
@@ -2454,7 +2454,7 @@ export default {
             <span id="Psichico"></span>
             <div class="my-card">
                 <div class="my-card-header psichico">
-                    <h1>Psichico Minori</h1>
+                    <h2>Psichico Minori</h2>
                     <button @click="findEffect(this.psichicoMinori)" class="button-dark">
                         Crit!
                     </button>
@@ -2507,7 +2507,7 @@ export default {
         <div class="col-12 col-md-6">
             <div class="my-card">
                 <div class="my-card-header psichico">
-                    <h1>Psichico Maggiori</h1>
+                    <h2>Psichico Maggiori</h2>
                     <button @click="findEffect(this.psichicoMaggiori)" class="button-dark">
                         Crit!
                     </button>
@@ -2560,7 +2560,7 @@ export default {
             <span id="Vuoto"></span>
             <div class="my-card">
                 <div class="my-card-header vuoto">
-                    <h1>Vuoto Minori</h1>
+                    <h2>Vuoto Minori</h2>
                     <button @click="findEffect(this.vuotoMinori)" class="button-void">
                         Crit!
                     </button>
@@ -2613,7 +2613,7 @@ export default {
             <span id="Vuoto"></span>
             <div class="my-card">
                 <div class="my-card-header vuoto">
-                    <h1>Vuoto Maggiori</h1>
+                    <h2>Vuoto Maggiori</h2>
                     <button @click="findEffect(this.vuotoMaggiori)" class="button-void">
                         Crit!
                     </button>
@@ -2697,7 +2697,7 @@ li{
     overflow: hidden;
     font-family: 'Times New Roman', Times, serif;
     color: black;
-    h1{
+    h2{
         font-size: 2rem;
     }
     background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(137, 0, 250, 0.1), rgba(0, 0, 0, 0.9)), url('/imgs/maxcoach-shape-13.png');
@@ -2705,7 +2705,6 @@ li{
 }
 
 .crit-section__description{
-    max-width: 40%;
     ul{
         list-style: circle;
     }
@@ -2901,7 +2900,7 @@ li{
 
 
 
-.my-card-header > h1{
+.my-card-header > h2{
     margin-right: 25px;
 }
 
