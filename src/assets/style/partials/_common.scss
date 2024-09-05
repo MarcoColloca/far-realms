@@ -20,3 +20,8 @@ h1{
     font-family: "Playwrite DK Loopet", cursive;
     font-optical-sizing: auto;
 }
+
+img{
+    pointer-events: none;
+    user-select: none;
+}
