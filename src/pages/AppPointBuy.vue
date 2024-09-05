@@ -340,7 +340,7 @@
         <div class="container mb-5">
             <div class="main-container">
                 <h2 class="text-center mb-3">Legenda</h2>
-                <div class="table-container fs-5">
+                <div class="table-container">
                     <table>
                         <thead>
                             <th class="px-2 text-center tborder-T tborder-L">Punteggio</th>
@@ -379,6 +379,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
+        font-size: calc(1.275rem + 0.3vw);
     }
 
     .stat-list{
@@ -474,6 +475,10 @@ label.focused {
 
 @media (max-width: 450px) {
     .main-container{
+        .table-container
+        {
+            font-size: 1rem;
+        }
         .stat-list{
             li{
                 width: 100%;            
