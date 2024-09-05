@@ -40,4 +40,10 @@
             border: 1px solid $app-purple;
         }
     }
+
+    @media (max-width: 450px) {
+        .back-top-button{
+            right: calc(6% );
+        }
+    }
 </style>

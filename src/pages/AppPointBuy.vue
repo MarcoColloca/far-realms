@@ -270,7 +270,8 @@
 <template>
     <section class="py-5">
         <h1 class="text-center glow-text-gold mb-5"> Point Buy</h1>
-
+        
+        <!-- Intro Sezione -->
         <div class="container mb-5">
             <div class="main-container p-5">            
                 <h5>
@@ -280,11 +281,12 @@
                 </h5>
             </div>
         </div>
-    
+        
+        <!-- Modifiche al Point Buy -->
         <div class="container mb-5">
             <div class="main-container p-5">
                 <div class="w-50 d-flex flex-column align-items-start m-0-auto">
-                    <div class="w-100 d-flex justify-content-between align-items-center">
+                    <div class="w-100 d-flex justify-content-between align-items-center flex-column flex-md-row">
                         <h5>
                             <label for="newAbility" :class="{focused: focusLabelText}"> Aggiungi Caratteristica:</label>
                         </h5>
@@ -292,7 +294,7 @@
                             <input @keyup.enter="addNewStat()" @focus="focusLabelText=true" @blur="focusLabelText=false" class="my-input" type="text" name="newAbility" id="newAbility" v-model="newAbility">
                         </h6>
                     </div>
-                    <div class="w-100 d-flex justify-content-between align-items-center">
+                    <div class="w-100 d-flex justify-content-between align-items-center flex-column flex-md-row">
                         <h5>                        
                             <label for="abilityPointsMax" :class="{focused: focusLabelNum}"> Modifica Punti Totali:</label>
                         </h5>
@@ -303,7 +305,8 @@
                 </div>
             </div>
         </div>
-    
+        
+        <!-- Point Buy -->
         <div class="container text-center mb-5">
             <div class="main-container">
                 <h2 class="text-center mb-5">Point Buy</h2>
@@ -331,7 +334,9 @@
                 </ul>
             </div>
         </div>
-    
+        
+
+        <!-- Legenda -->
         <div class="container mb-5">
             <div class="main-container">
                 <h2 class="text-center mb-3">Legenda</h2>
@@ -467,4 +472,13 @@ label.focused {
     text-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 1em rgba(255, 165, 0, 0.8), 0 0 0.2em rgba(255, 165, 0, 0.8);
 }
 
+@media (max-width: 450px) {
+    .main-container{
+        .stat-list{
+            li{
+                width: 100%;            
+            }
+        }
+    }
+}
 </style>
