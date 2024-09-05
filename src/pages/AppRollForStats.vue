@@ -490,6 +490,8 @@ export default {
 
 <template>
     <section class="py-5">
+        <h1 class="text-center mb-5 glow-text-crimson">Roll for Stats!</h1>
+
         <div class="main-container">
             <!-- Sezione della Selezione delle Tab -->
             <div class="tab-selection-section">

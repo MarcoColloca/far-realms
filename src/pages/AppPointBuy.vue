@@ -269,7 +269,8 @@
 
 <template>
     <section class="py-5">
-    
+        <h1 class="text-center glow-text-gold mb-5"> Point Buy</h1>
+
         <div class="container mb-5">
             <div class="main-container p-5">            
                 <h5>

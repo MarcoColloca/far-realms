@@ -1106,7 +1106,7 @@ export default {
     
 <div class="crit-section">
     <div class="container text-light mt-4 crit-section__description d-none d-md-block">
-        <h3 class="text-center glow-text-purple mb-4">Tabelle dei Critici</h3>
+        <h1 class="text-center glow-text-purple mb-4">Tabelle dei Critici</h1>
         
         <span class="text-start fs-5">
             Questa sezione è stata creata perchè io ed i miei amici abbiamo sempre trovato i Critici della 5e "noiosi". <br>

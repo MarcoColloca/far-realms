@@ -16,7 +16,7 @@
     <section class="my-5 hero container">
         <div class="h-100 ">
             <div class="hero-container">
-                <h1 class="text-coral">
+                <h1 class="glow-text-purple">
                     Homepage
                 </h1>
                 <p>
@@ -46,9 +46,6 @@
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;   
-        h1{
-            font-family: 'Times New Roman', Times, serif;
-        }
         p{
             font-size: 21px;
         }
