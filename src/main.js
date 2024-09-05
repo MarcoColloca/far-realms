@@ -10,7 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 
-// Icone Regular Font Awesome
+// Icone Solid Font Awesome
 import { 
     faClock as faClockSolid,
     faChevronDown as faChevronDownSolid,
@@ -20,9 +20,10 @@ import {
     faEye as faEyeSolid,
     faLocationDot as faLocationDotSolid,
     faRectangleList as faRectangleListSolid,
+    faScroll as faScrollSolid,
 } from '@fortawesome/free-solid-svg-icons'
 
-// Icone Solid Font Awesome
+// Icone Regular Font Awesome
 import { 
     faClock as faClockRegular,    
     faUser as faUserRegular,
@@ -38,7 +39,7 @@ import{
     faLinkedin,
 } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faClockSolid, faClockRegular, faChevronDownSolid, faTwitter, faFacebookF, faInstagram, faLinkedin, faArrowUpLongSolid, faCircleSolid, faArrowRightLongSolid, faUserRegular, faFileLinesRegular, faEyeSolid, faCalendarRegular, faLocationDotSolid, faRectangleListSolid)
+library.add(faClockSolid, faScrollSolid, faClockRegular, faChevronDownSolid, faTwitter, faFacebookF, faInstagram, faLinkedin, faArrowUpLongSolid, faCircleSolid, faArrowRightLongSolid, faUserRegular, faFileLinesRegular, faEyeSolid, faCalendarRegular, faLocationDotSolid, faRectangleListSolid)
 
 const app = createApp(App)
 
