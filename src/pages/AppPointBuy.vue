@@ -132,6 +132,7 @@
                 if(stat.name !== '' && isNaN(stat.name))
                 {
                     this.stats.push(stat)
+                    this.newAbility = ''
                 }
             },
 
@@ -349,13 +350,14 @@
         <!-- Modifiche al Point Buy -->
         <div class="container mb-5">
             <div class="main-container p-5">
-                <div class="w-50 d-flex flex-column align-items-start m-0-auto">
+                <div class="w-75 w-md-50 d-flex flex-column align-items-start m-0-auto text-center">
                     <div class="w-100 d-flex justify-content-between align-items-center flex-column flex-md-row">
                         <h5>
                             <label for="newAbility" :class="{focused: focusLabelText}"> Aggiungi Caratteristica:</label>
                         </h5>
                         <h6>
                             <input @keyup.enter="addNewStat()" @focus="focusLabelText=true" @blur="focusLabelText=false" class="my-input" type="text" name="newAbility" id="newAbility" v-model="newAbility">
+                            <font-awesome-icon :icon="['fas', 'plus']" class="d-inline-block d-md-none ms-2 btn btn-outline-light" @click="addNewStat()" />
                         </h6>
                     </div>
                     <div class="w-100 d-flex justify-content-between align-items-center flex-column flex-md-row">
