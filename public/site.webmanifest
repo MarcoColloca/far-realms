@@ -1,0 +1,13 @@
+{
+    "short_name": "Far Realms",
+    "name": "Far Realms",
+    "icons": [
+        {
+            "src": "/imgs/ChibiFlayer.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "theme_color": "#6e06f7",
+    "display": "fullscreen"
+}
