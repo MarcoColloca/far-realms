@@ -13,46 +13,55 @@ export default {
                     name: 'Forza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Destrezza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Costituzione',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Intelligenza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Saggezza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Carisma',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Sanità',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Fama',
                     visible: false,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Fortuna',
                     visible: false,
                     dice: [],
+                    removedDice: [],
                 },
             ],
 
@@ -61,46 +70,55 @@ export default {
                     name: 'Forza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Destrezza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Costituzione',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Intelligenza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Saggezza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Carisma',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Sanità',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Fama',
                     visible: false,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Fortuna',
                     visible: false,
                     dice: [],
+                    removedDice: [],
                 },
             ],
 
@@ -109,46 +127,55 @@ export default {
                     name: 'Forza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Destrezza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Costituzione',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Intelligenza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Saggezza',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Carisma',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Sanità',
                     visible: true,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Fama',
                     visible: false,
                     dice: [],
+                    removedDice: [],
                 },
                 {
                     name: 'Fortuna',
                     visible: false,
                     dice: [],
+                    removedDice: [],
                 },
             ],
 
@@ -387,8 +414,9 @@ export default {
                     numbers.push(number)
                 }
 
-
+                
                 numbers.sort()
+                const discardedNumbers = numbers.slice(0, diceRemoved).sort((a,b) => {return b - a})
                 const newNumbers = numbers.slice(diceRemoved, numbers.length)
 
                 let stat = 0;
@@ -401,7 +429,7 @@ export default {
 
 
                 diceArray[i].dice = newNumbers
-
+                diceArray[i].removedDice = discardedNumbers
 
 
                 tab[i].value = stat
@@ -478,8 +506,15 @@ export default {
 
         },
 
-        getDiceImg(number) {
-            return `/imgs/d6-${number}.png`
+        getDiceImg(number, type) {
+            if(type === 'kept')
+            {
+                return `/imgs/d6-${number}.png`
+            }
+            else if(type === 'removed')
+            {
+                return `/imgs/d6-${number}-r.png`    
+            }
         }
     }
 }
@@ -779,11 +814,20 @@ export default {
                 <div class="row justify-around">
                     <div class="col-4">
                         <ul class="statsDice">
-                            <li v-for="object in statsDice1" class="dash">
-                                <div v-if="object.visible">
-                                    <span>{{ object.name }}: </span>
-                                    <p v-for="dice in object.dice"> <img class="dice-img" :src="getDiceImg(dice)"
-                                            :alt="dice"> </p>
+                            <li v-for="object in statsDice1" class="statsDice--container">
+                                <div v-if="object.visible" class="statsDice--item">
+                                    <span class="text-start">{{ object.name }}: </span>
+                                    <span>
+                                        
+                                        <p v-for="dice in object.dice"> 
+                                            <img class="dice-img" :src="getDiceImg(dice, 'kept')" :alt="dice"> 
+                                        </p>
+                                        <span v-if="object.removedDice.length > 0">
+                                            <p v-for="dice in object.removedDice">
+                                                <img class="dice-img" :src="getDiceImg(dice, 'removed')" :alt="dice">
+                                            </p>
+                                        </span>
+                                    </span>
                                 </div>
                             </li>
                         </ul>
@@ -791,11 +835,19 @@ export default {
 
                     <div class="col-4">
                         <ul class="statsDice">
-                            <li v-for="object in statsDice2" class="dash">
-                                <div v-if="object.visible">
-                                    <span>{{ object.name }}: </span>
-                                    <p v-for="dice in object.dice"> <img class="dice-img" :src="getDiceImg(dice)"
-                                            :alt="dice"> </p>
+                            <li v-for="object in statsDice2" class="statsDice--container">
+                                <div v-if="object.visible" class="statsDice--item">
+                                    <span class="text-start">{{ object.name }}: </span>
+                                    <span>
+                                        <p v-for="dice in object.dice"> 
+                                            <img class="dice-img" :src="getDiceImg(dice, 'kept')" :alt="dice"> 
+                                        </p>
+                                        <span v-if="object.removedDice.length > 0">
+                                            <p v-for="dice in object.removedDice">
+                                                <img class="dice-img" :src="getDiceImg(dice, 'removed')" :alt="dice">
+                                            </p>
+                                        </span>
+                                    </span>
                                 </div>
                             </li>
                         </ul>
@@ -803,11 +855,19 @@ export default {
 
                     <div class="col-4">
                         <ul class="statsDice">
-                            <li v-for="object in statsDice3" class="dash">
-                                <div v-if="object.visible">
-                                    <span>{{ object.name }}: </span>
-                                    <p v-for="dice in object.dice"> <img class="dice-img" :src="getDiceImg(dice)"
-                                            :alt="dice"> </p>
+                            <li v-for="object in statsDice3" class="statsDice--container">
+                                <div v-if="object.visible" class="statsDice--item">
+                                    <span class="text-start">{{ object.name }}: </span>
+                                    <span>
+                                        <p v-for="dice in object.dice"> 
+                                            <img class="dice-img" :src="getDiceImg(dice, 'kept')" :alt="dice"> 
+                                        </p>
+                                        <span v-if="object.removedDice.length > 0">
+                                            <p v-for="dice in object.removedDice">
+                                                <img class="dice-img" :src="getDiceImg(dice, 'removed')" :alt="dice">
+                                            </p>
+                                        </span>
+                                    </span>
                                 </div>
                             </li>
                         </ul>
@@ -1013,29 +1073,34 @@ menu {
 
 .statsDice {
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     text-align: left;
 }
 
 .statsDice li {
     margin-bottom: 11px;
-    min-height: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
-.dash {
-    margin-left: 45px;
+.statsDice--container {
+    margin-left: 25px;
 }
 
-.dash p {
+.statsDice--container p {
     display: inline-block;
 }
 
-.dash span {
-    margin-right: 10px;
+.statsDice--item{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
 }
 
 .dice-img {
