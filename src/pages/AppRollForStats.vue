@@ -461,14 +461,17 @@ export default {
 
             for (let i = 0; i < this.statsDice1.length; i++) {
                 this.statsDice1[i].dice = []
+                this.statsDice1[i].removedDice = []
             }
 
             for (let i = 0; i < this.statsDice2.length; i++) {
                 this.statsDice2[i].dice = []
+                this.statsDice2[i].removedDice = []
             }
 
             for (let i = 0; i < this.statsDice3.length; i++) {
                 this.statsDice3[i].dice = []
+                this.statsDice3[i].removedDice = []
             }
 
 
