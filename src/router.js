@@ -1,5 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
+import { store } from './store'
 
 // Import delle Pagine dell'Applicativo
 import AppHome from './pages/AppHome.vue'
@@ -43,5 +44,15 @@ const router = createRouter({
 
 })
 
+
+// Guard beforeEach → Controlla i cambiamenti nelle rotte.
+router.beforeEach((to, from) => {
+    // Se la rotta ha nome 'NotFound', imposta notFound su true nello store
+    if (to.name === 'NotFound') {
+        store.notFound = true;
+    } else {
+        store.notFound = false;
+    }    
+})
 
 export default router
