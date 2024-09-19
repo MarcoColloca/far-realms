@@ -378,7 +378,7 @@
                 <h2 class="text-center mb-3">Point Buy</h2>
                 <h6 class="btn btn-outline-warning mb-5" @click="resetPointBuy">Reset</h6>
     
-                <h4 class="mb-5">Punti Inziali: <span :class="checkMax()">{{ abilityPoints }}</span> <span> / {{ abilityPointsMax }}</span></h4>
+                <h4 class="mb-5">Punti Spesi: <span :class="checkMax()">{{ abilityPoints }}</span> <span> / {{ abilityPointsMax }}</span></h4>
     
                 <ul class="stat-list">
                     <li v-for="stat in stats" class="position-relative">
