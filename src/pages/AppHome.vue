@@ -4,7 +4,15 @@
     export default{
         components:{
             Runner
-        }
+        },
+
+        beforeRouteLeave(to, from)
+        {
+            const runnerComponent = this.$refs.Runner;
+            if (runnerComponent) {
+                runnerComponent.stopAnimation(); 
+            }
+        },
     }
 </script>
 
@@ -29,7 +37,7 @@
 
     </section>
     <section class="bg-dark">
-        <Runner>
+        <Runner ref="Runner"> 
             <div>ciao !!!!!! </div>
             <div>questo </div>
             <div>è solo </div>

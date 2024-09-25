@@ -4,6 +4,7 @@ import gsap from 'gsap';
 export default {
     data() {
         return {
+            isAnimating: true,
             x: 0,
             baseVelocity: -5,
             velocity: -2,
@@ -39,6 +40,9 @@ export default {
         // rimozione eventi per il dragging
         window.removeEventListener('mousemove', this.onMouseMove);
         window.removeEventListener('mouseup', this.onMouseUp);
+
+        
+        this.isAnimating = false;
     },
 
     methods: {
@@ -51,6 +55,9 @@ export default {
         },
 
         tic(time) {
+            // ferma l'animazione, se non è presente un Runner nella pagina
+            if(!this.isAnimating) return;
+
             let dt = (time - this.prevTime) * 0.001;
             this.prevTime = time;
 
@@ -71,13 +78,12 @@ export default {
             }
             gsap.set(this.runner, { xPercent: this.x });
 
+            
             requestAnimationFrame(this.tic);
         },
 
         onMouseDown(e)
         {
-            
-            
             this.isDrag = true;
             
             this.prevPointer.x = e.clientX // per il touch: event.touches[0].clientX
@@ -97,6 +103,13 @@ export default {
 
                 this.prevPointer.x = this.pointer.x;
             }
+        },
+
+        stopAnimation()
+        {
+            this.isAnimating = false;
+            window.removeEventListener('mousemove', this.onMouseMove);
+            window.removeEventListener('mouseup', this.onMouseUp);
         }
     }
 }
