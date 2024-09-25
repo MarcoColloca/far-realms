@@ -1,8 +1,9 @@
-import { createApp } from 'vue'
-import './assets/style/general.scss'
-import router from './router'
-import App from './App.vue'
-import * as bootstrap from 'bootstrap'
+import { createApp } from 'vue';
+import './assets/style/general.scss';
+import router from './router';
+import App from './App.vue';
+import * as bootstrap from 'bootstrap';
+import { gsap } from "gsap";
 
 
 /* Importazione della libreria di font awesome*/

@@ -17,6 +17,7 @@
     "@popperjs/core": "^2.11.8",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
+    "gsap": "^3.12.5",
     "vue": "^3.4.21"
   },
   "devDependencies": {
