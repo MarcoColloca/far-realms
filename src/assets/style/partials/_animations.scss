@@ -118,7 +118,37 @@
     }
 }
   
-  
+ .rainbow{
+    animation: rainbow 10s infinite alternate;
+
+    @keyframes rainbow {
+        0% {
+            color: crimson;
+        }
+    
+        20%{
+            color: greenyellow;
+        }
+    
+        40%{
+            color: purple;
+        }
+    
+        60%{
+            color: white;
+        }
+    
+        80%{
+            color: cornflowerblue
+        }
+    
+        100%{
+            color: crimson;
+        }
+    }
+ }
+
+
 .run-left{
     
     animation: run 10s linear infinite;
