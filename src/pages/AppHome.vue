@@ -36,7 +36,7 @@
         </div>
 
     </section>
-    <section class="bg-dark">
+    <section class="bg-dark d-none d-lg-block">
         <Runner ref="Runner"> 
             <div>ciao !!!!!! </div>
             <div>questo </div>
