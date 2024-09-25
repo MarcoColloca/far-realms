@@ -36,16 +36,16 @@
         </div>
 
     </section>
-    <section class="bg-dark d-none d-lg-block">
-        <Runner ref="Runner"> 
-            <div>ciao !!!!!! </div>
-            <div>questo </div>
-            <div>è solo </div>
-            <div>un test.</div>
-            <div>ciao !!!!!! </div>
-            <div>questo </div>
-            <div>è solo </div>
-            <div>un test.</div>
+    <section class="d-none d-lg-block">
+        <Runner ref="Runner" class="runner-fs"> 
+            <div class="rainbow">(ง•̀_•́)ง</div>
+            <div class="rainbow">(ง•̀_•́)ง</div>
+            <div class="rainbow">(ง•̀_•́)ง</div>
+            <div class="rainbow">(ง•̀_•́)ง</div>
+            <div class="rainbow">(ง•̀_•́)ง</div>
+            <div class="rainbow">(ง•̀_•́)ง</div>
+            <div class="rainbow">(ง•̀_•́)ง</div>
+            <div class="rainbow">(ง•̀_•́)ง</div>
         </Runner>
     </section>
 </template>
@@ -71,5 +71,9 @@
         p{
             font-size: 21px;
         }
+    }
+
+    .runner-fs{
+        font-size: 8rem;
     }
 </style>
