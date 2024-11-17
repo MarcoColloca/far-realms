@@ -1000,7 +1000,7 @@ menu {
     background-color: transparent;
     padding: 5px 10px;
     border: 1px solid crimson;
-    width: 55px;
+    width: 60px;
     appearance: auto;
     -moz-appearance: textfield;
 }
