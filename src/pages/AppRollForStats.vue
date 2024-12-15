@@ -186,6 +186,7 @@ export default {
                 third: false,
                 fourth: false,
                 fifth: false,
+                mind: false,
             },
 
             firstTab: [
@@ -404,7 +405,7 @@ export default {
         },
 
 
-        generateStat(tab, diceRolled, diceRemoved, diceArray) {
+        generateStat(tab, diceRolled, diceRemoved, diceArray, plus = 0) {
 
             for (let i = 0; i < tab.length; i++) {
                 const numbers = []
@@ -425,7 +426,7 @@ export default {
 
                     stat += dice
                 }
-
+                stat += plus
 
 
                 diceArray[i].dice = newNumbers
@@ -480,6 +481,7 @@ export default {
             this.choseTab.third = false;
             this.choseTab.fourth = false;
             this.choseTab.fifth = false;
+            this.choseTab.mind = false;
 
             if (this.selected === '4d6') {
                 this.choseTab.first = false;
@@ -487,24 +489,35 @@ export default {
                 this.choseTab.third = false;
                 this.choseTab.fourth = false;
                 this.choseTab.fifth = false;
+                 this.choseTab.mind = false;
             } else if (this.selected === '5d6') {
                 this.choseTab.first = false;
                 this.choseTab.second = false;
                 this.choseTab.third = true;
                 this.choseTab.fourth = false;
                 this.choseTab.fifth = false;
+                 this.choseTab.mind = false;
             } else if (this.selected === '6d6') {
                 this.choseTab.first = false;
                 this.choseTab.second = false;
                 this.choseTab.third = false;
                 this.choseTab.fourth = true;
                 this.choseTab.fifth = false;
+                 this.choseTab.mind = false;
+            } else if (this.selected === 'mind') {
+                this.choseTab.first = false;
+                this.choseTab.second = false;
+                this.choseTab.third = false;
+                this.choseTab.fourth = false;
+                this.choseTab.fifth = false;
+                 this.choseTab.mind = true;
             } else if (this.selected === 'flat') {
                 this.choseTab.first = false;
                 this.choseTab.second = false;
                 this.choseTab.third = false;
                 this.choseTab.fourth = false;
                 this.choseTab.fifth = true;
+                this.choseTab.mind = false;
             }
 
         },
@@ -542,6 +555,7 @@ export default {
                                 <option>4d6</option>
                                 <option>5d6</option>
                                 <option>6d6</option>
+                                <option>mind</option>
                                 <option>flat</option>
                             </select>
                         </div>
@@ -747,6 +761,55 @@ export default {
 
                         <div class="col-4">
                             <button class="roll-button" @click="generateStat(thirdTab, 6, 3, statsDice3)">Roll!</button>
+                            <ul class="roll-tab-section__tabs-wrapper__tab--6d6">
+                                <li v-for="object in thirdTab" :key="object.id">
+                                    <div v-if="object.visible">
+                                        <span>{{ object.stat }}:</span> <span>{{ object.value }}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schede Mind -->
+            <div class="roll-tab-section" v-show="choseTab.mind === true">
+                <h1 class="roll-tab-section__title">
+                    Schede per le Stats della campagna di Mind
+                </h1>
+                <p class="roll-tab-section__subtitle">
+                    Per ogni Statistica verranno lanciati 5d6 e tenuti i 4 migliori e aggiunto 1 alla fine.
+                </p>
+
+
+                <div class="container">
+                    <div class="roll-tab-section__tabs-wrapper row">
+                        <div class="col-4">
+                            <button class="roll-button" @click="generateStat(firstTab, 5, 1, statsDice1, 1)">Roll!</button>
+                            <ul class="roll-tab-section__tabs-wrapper__tab--6d6">
+                                <li v-for="object in firstTab" :key="object.id">
+                                    <div v-if="object.visible">
+                                        <span>{{ object.stat }}:</span> <span>{{ object.value }}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-4">
+                            <button class="roll-button"
+                                @click="generateStat(secondTab, 5, 1, statsDice2, 1)">Roll!</button>
+                            <ul class="roll-tab-section__tabs-wrapper__tab--6d6">
+                                <li v-for="object in secondTab" :key="object.id">
+                                    <div v-if="object.visible">
+                                        <span>{{ object.stat }}:</span> <span>{{ object.value }}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-4">
+                            <button class="roll-button" @click="generateStat(thirdTab, 5, 1, statsDice3, 1)">Roll!</button>
                             <ul class="roll-tab-section__tabs-wrapper__tab--6d6">
                                 <li v-for="object in thirdTab" :key="object.id">
                                     <div v-if="object.visible">
