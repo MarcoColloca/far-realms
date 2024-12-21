@@ -779,7 +779,23 @@ export default {
                     Schede per le Stats della campagna di Mind
                 </h1>
                 <p class="roll-tab-section__subtitle">
-                    Per ogni Statistica verranno lanciati 5d6 e tenuti i 4 migliori e aggiunto 1 alla fine.
+                    Per ogni Statistica verranno lanciati 5d6 e tenuti i 4 migliori e aggiunto 1 alla fine. <br>
+                    <span class="row mt-2">
+                        <strong class="col-6 text-crimson text-end">
+                            Standard Array: 
+                        </strong>
+                        <span class="col-6 text-white text-start ps-2">
+                            22 - 19 - 18 - 16 - 12 - 11 
+                        </span>
+                    </span>
+                    <span class="row">
+                        <strong class="col-6 text-crimson text-end">
+                            Prime Stats:
+                        </strong>
+                        <span class="col-6 text-white text-start ps-2">
+                            30 - 26 - 22 - 18 - 14 - 12
+                        </span>
+                    </span>                     
                 </p>
 
 
